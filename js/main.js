@@ -9292,7 +9292,7 @@ $(document).ready(function() {
   });
 
   $.ajax({
-  	url: '/data/index.json',
+  	url: './data/index.json',
   	success: function(data) {
   		var list = data.articles,
   			namelist = [];
