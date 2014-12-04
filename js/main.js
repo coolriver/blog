@@ -9291,4 +9291,18 @@ $(document).ready(function() {
     $(this).addClass("hljs");
   });
 
+  $.ajax({
+  	url: '/blog/data/index.json',
+  	success: function(data) {
+  		var list = data.articles,
+  			namelist = [];
+  		for (var i in list){
+  			namelist.push('<li><a href="/blog/article/'+list[i].name+'.html">');
+  			namelist.push(list[i].title);
+  			namelist.push('</a></li>');
+  		}
+  		$("#ul-title").html(namelist.join(''));
+  	}
+  });
+
 });;
