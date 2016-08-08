@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+<body>
+<a href="http://www.test.com/openerTest/target.html" target="_blank">不同域名target _blank</a>
+<br>
+<a href="http://www.example.com/openerTest/target.html" target="_blank">相同域名target _blank</a>
+<br>
+<a href="http://www.example.com/openerTest/target.html" target="_blank" rel="noopener">相同域名target _blank noopener</a>
+<br>
+<a id="btn-diff" href="javascript:void(0);">不同域名 window.open</a>
+<br>
+<a id="btn-iframe" href="javascript:void(0);">新建iframe打开</a>
+<br>
+<a id="btn-open" href="javascript:void(0);">window.open并且设置opener为null</a>
+<p id="random-number"></p>
+
+<script>
+    window.onload = function() {
+        var randomItem = document.getElementById('random-number'),
+            btnDiff = document.getElementById('btn-diff'),
+            btnIframe = document.getElementById('btn-iframe'),
+            btnOpen = document.getElementById('btn-open');
+
+        console.log('DOM READY');
+        btnDiff.addEventListener('click', function() {
+            window.open('http://www.test.com/openerTest/target.html');
+        });
+
+        btnIframe.addEventListener('click', function() {
+            iframeOpen('http://www.test.com/openerTest/target.html');
+        });
+
+        btnOpen.addEventListener('click', function() {
+            var child = window.open('http://www.test.com/openerTest/target.html');
+
+            child.opener = null;
+        })
+
+        var setRandom = function() {
+            randomItem.innerHTML = Math.random();
+
+            setTimeout(setRandom, 10);
+        }
+
+        setRandom();
+    }
+
+    /**
+   * Opens the provided url by injecting a hidden iframe that calls
+   * window.open(), then removes the iframe from the DOM.
+   *
+   * @param   {string} url The url to open
+   * @param   {string} [strWindowName]
+   * @param   {string} [strWindowFeatures]
+   * @returns {Window}
+   */
+  function iframeOpen(url, strWindowName, strWindowFeatures) {
+    var iframe, iframeDoc, script, openArgs, newWin;
+
+    iframe = document.createElement('iframe');
+    iframe.style.display = 'none';
+    document.body.appendChild(iframe);
+    iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+
+    openArgs = '"' + url + '"';
+    if (strWindowName) {
+      openArgs += ', "' + strWindowName + '"';
+    }
+    if (strWindowFeatures) {
+      openArgs += ', "' + strWindowFeatures + '"';
+    }
+
+    script = iframeDoc.createElement('script');
+    script.type = 'text/javascript';
+    script.text = 'window.parent = null; window.top = null;' +
+      'window.frameElement = null; var child = window.open(' + openArgs + ');' +
+      'child.opener = null';
+    iframeDoc.body.appendChild(script);
+    newWin = iframe.contentWindow.child;
+
+    document.body.removeChild(iframe);
+    return newWin;
+  }
+</script>
+</body>
+</html>
