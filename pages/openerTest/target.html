@@ -1,18 +1,35 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="utf-8">
     <title></title>
 </head>
 <body>
-
+<p id="content"></p>
 <script>
-  function superFunJankTime() {
-    var start = Date.now();
-    while (Date.now() - start < 1000);
-    setTimeout(superFunJankTime, 1000);
-  } 
 
-  superFunJankTime();
+    window.onload = function(arguments) {
+        hackOrigin();
+        superFunJankTime();
+    };
+
+
+    function hackOrigin() {
+        var content = document.getElementById('content');
+
+        if (window.opener) {
+            opener.location = './origin.html#hack';
+            content.innerHTML = 'HACK成功，再看看上个TAB？';
+        } else {
+            content.innerHTML = 'HACK失败。。。。';
+        }
+    }
+
+    function superFunJankTime() {
+        var start = Date.now();
+        while (Date.now() - start < 1000);
+        setTimeout(superFunJankTime, 1000);
+    } 
 </script>
 </body>
 </html>
