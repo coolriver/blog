@@ -43,7 +43,7 @@
                 <th class="tLeft"><span></span></th>
                 <th class="tMid">
                     <div class="bLyTop"><strong id="_1801474340966447_titleName">登录新浪博客</strong>
-                        <cite><a id="_1801474340966447_btnClose" href="#" onclick="return false;" class="CP_w_shut" title="关闭">关闭</a></cite>
+                        <cite><a id="close" href="#" onclick="return false;" class="CP_w_shut" title="关闭">关闭</a></cite>
                     </div>
                 </th>
                 <th class="tRight"><span></span></th>
@@ -110,16 +110,31 @@
 
     function bindEvent(frameItem) {
         frameItem.addEventListener('load', function() {
-            document.getElementById('mask').style.display = 'block';
-            document.getElementById('panel').style.display = 'block';
+            showPanel()
         });
-        
+
         document.getElementById('login_button').addEventListener('click', function(e) {
             var username = document.getElementById('login_name_d').value;
             var password = document.getElementById('login_pass_d').value;
 
+            hidePanel();
+
             alert('哎呀你太不小心了，你的用户名和密码分别是：\n' + username + '\n' + password);
         });
+
+         document.getElementById('close').addEventListener('click', function(e) {
+            hidePanel();
+         });
+    }
+
+    function showPanel() {
+        document.getElementById('mask').style.display = 'block';
+        document.getElementById('panel').style.display = 'block';
+    }
+
+    function hidePanel() {
+        document.getElementById('mask').style.display = 'none';
+        document.getElementById('panel').style.display = 'none';
     }
     </script>
 </body>
