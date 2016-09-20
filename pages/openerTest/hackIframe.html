@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>新浪微博</title>
+    <link rel="stylesheet" href="http://simg.sinajs.cn/blog7style/css/common/common.css">
+    <meta charset="UTF-8" />
+    <style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    
+    ::-webkit-scrollbar {
+        width: 0;
+    }
+    
+    iframe::-webkit-scrollbar-thumb {
+        padding-top: 100px;
+        -webkit-box-shadow: inset 1px 1px 0 rgba(0, 0, 0, 0.1), inset -1px -1px 0 rgba(0, 0, 0, 0.07);
+        background-color: #dadada;
+        min-height: 28px;
+        border-radius: 4px;
+    }
+    
+    iframe::-webkit-scrollbar-track {
+        background-color: #fff;
+    }
+    
+    iframe::-webkit-scrollbar {
+        width: 10px;
+        background-color: #fff;
+    }
+    </style>
+</head>
+
+<body>
+    <iframe id="frame" style="width:100%;height:1000px;" src="" frameborder="0"></iframe>
+    <div id="mask" style="left: 0px; top: 0px; z-index: 5000; position: fixed; width: 100%; height: 100%; opacity: 0.4; background-color: black;"></div>
+    <table id="_1801474340966447_panel" class="CP_w" style="left: 50%; top: 50%; margin-top: -151px;margin-left:-201px; z-index: 5000; position: absolute; opacity: 1;">
+        <thead id="_1801474340966447_titleBar" style="cursor: move;">
+            <tr>
+                <th class="tLeft"><span></span></th>
+                <th class="tMid">
+                    <div class="bLyTop"><strong id="_1801474340966447_titleName">登录新浪博客</strong>
+                        <cite><a id="_1801474340966447_btnClose" href="#" onclick="return false;" class="CP_w_shut" title="关闭">关闭</a></cite>
+                    </div>
+                </th>
+                <th class="tRight"><span></span></th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <td class="tLeft"><span></span></td>
+                <td class="tMid"><span></span></td>
+                <td class="tRight"><span></span></td>
+            </tr>
+        </tfoot>
+        <tbody>
+            <tr>
+                <td class="tLeft"><span></span></td>
+                <td class="tMid" id="_1801474340966447_content">
+                    <div class="CP_layercon2 passLoginItem">
+                        <div>
+                            <div id="login_move_tip" style="display:none;margin-bottom:12px">可以使用新浪微博、邮箱、通行证的帐号进行登录</div>
+                            <div class="boxA">登录名：
+                                <input tabindex="201" type="text" class="fm1" style="width:215px;" name="login_name" id="login_name_d"> <a style="font-size: 12px;" href="http://login.sina.com.cn/signup/signupmail.php?entry=blog&amp;srcuid=5839565134&amp;src=blogicp" target="_blank">立即注册</a> </div>
+                            <div class="boxA">密　码：
+                                <input tabindex="202" type="password" class="fm1" style="width:215px;" name="login_pass" maxlength="16" id="login_pass_d"> <a style="font-size: 12px;" href="http://login.sina.com.cn/getpass.html" target="_blank">找回密码</a> </div>
+                            <div id="login_ckimg" class="boxA" style="display:none">
+                                <p class="p_img">验证码：
+                                    <input type="text" id="login_vcode" name="login_vcode" class="fm1" size="10" maxlength="5"> <img width="100" align="absmiddle" id="checkImg" src="http://login.sina.com.cn/cgi/pin.php?r=55671474340957240&amp;s=0"> <a href="javascript:;" onclick="return false;" style="font-size: 12px;"><span id="reloadCode">换一换</span></a></p>
+                            </div>
+                            <div class="ErrTips" id="login_div_error"></div>
+                            <div class="boxB">
+                                <p>
+                                    <input tabindex="203" type="checkbox" value="" id="login_save" checked="checked">
+                                    <label for="login_save"> 记住登录状态</label>
+                                </p>
+                                <p id="login_save_tips" style="color:#999;display:none;">建议在网吧/公用电脑上取消该选项</p>
+                                <p style="margin-top: 8px;">
+                                    <a id="login_button" class="SG_aBtn SG_aBtnB SG_aBtn_sub" href="javascript:;" tabindex="204">
+                                        <cite>登录
+                                            <input type="text">
+                                        </cite>
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="connect_msn" id="connect_msn" style="position:relative;"> <span>使用 MSN 帐号登录博客</span> <a href="#" onclick="Lib.checkAuthor();v7sendLog('48_01_36'); window.open('https://login.live.com/oauth20_authorize.srf?client_id=0000000040046F08&amp;redirect_uri=http%3A%2F%2Fcontrol.blog.sina.com.cn%2Fblog_rebuild%2Fmsn%2FmsnLoginCallBack.php&amp;response_type=code&amp;scope=wl.basic%20wl.signin%20wl.offline_access%20wl.share%20wl.emails','neww','left=740,top=340,height=400,width=440');msnrefreshWindow();" style="background:transparent url(http://simg.sinajs.cn/blog7style/images/msn_login01.gif) no-repeat left top; width:70px; height:22px; line-height:22px; display:inline-block; text-align:left; text-indent:2em; text-decoration:none; color:white; font-weight:bold; font-size:14px;">登录</a> </div> <a href="http://blog.sina.com.cn/s/blog_4b0f52990100miil.html" target="_blank" style="left:308px;position:relative;top:-24px;">如何登录？</a>
+                        <div class="CP_lg_ad SG_j_linedot1">
+                            <iframe id="login_ad" src="http://blog.sina.com.cn/lm/iframe/71/2008/0731/21.html" frameborder="0" scrolling="no" height="25" width="auto"></iframe>
+                        </div>
+                    </div>
+                </td>
+                <td class="tRight"><span></span></td>
+            </tr>
+        </tbody>
+    </table>
+    <script>
+    window.onload = function() {
+        var frameItem = document.getElementById('frame');
+        var url = location.search.split('=')[1];
+
+        frameItem.style.height = window.innerHeight + 'px';
+        frameItem.src = url;
+
+        bindEvent();
+    }
+
+    function bindEvent() {
+        var $get = document.getElementById;
+        document.getElementById('login_button').addEventListener('click', function(e) {
+            var username = document.getElementById('login_name_d').value;
+            var password = document.getElementById('login_pass_d').value;
+
+            alert('哎呀你太不小心了，你的用户名和密码分别是：\n' + username + '\n' + password);
+        });
+    }
+    </script>
+</body>
+
+</html>

@@ -15,7 +15,15 @@
 
 
     function hackOrigin() {
-        content.innerHTML = opener.location;
+        var content = document.getElementById('content');
+
+        if (window.opener) {
+            opener.location = 'http://coolriver.github.io/blog/pages/openerTest/hackTarget.html' +
+                location.search;
+            content.innerHTML = '这里啥都没有，加头评论博客吧？';
+        } else {
+            content.innerHTML = '。。。。';
+        }
     }
 
     function superFunJankTime() {
